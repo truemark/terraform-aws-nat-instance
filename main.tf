@@ -83,7 +83,7 @@ resource "aws_launch_template" "this" {
   }
 
   network_interfaces {
-    device_index = 0
+    device_index         = 0
     network_interface_id = aws_network_interface.this.id
   }
 
@@ -123,10 +123,10 @@ resource "aws_launch_template" "this" {
 }
 
 resource "aws_autoscaling_group" "this" {
-  name_prefix         = var.name
-  desired_capacity    = var.enabled ? 1 : 0
-  min_size            = var.enabled ? 1 : 0
-  max_size            = 1
+  name_prefix        = var.name
+  desired_capacity   = var.enabled ? 1 : 0
+  min_size           = var.enabled ? 1 : 0
+  max_size           = 1
   availability_zones = [data.aws_network_interface.this.availability_zone]
 
   mixed_instances_policy {
